@@ -1,1 +1,1 @@
-# mlzoomcamp_projects
+# Repo for all mlzoomcamp projects
