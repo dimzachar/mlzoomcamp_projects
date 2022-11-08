@@ -1,13 +1,10 @@
 ## Midterm Project mlzoomcamp
 
 ## Table of Contents
- * [Description of the problem](#description)
- * [Project Objectives](#objectives)
- * [Running the Project](#running-the-project)
-    * [Local deployment](#local-deployment)
-    * [Remote deployment on Heroku](#remote-deployment-on-heroku)
- * [Accessing the Heroku app](#accessing-the-heroku-app)
- * [One simple example to verify the Heroku app is working](#one-simple-example-to-verify-the-heroku-app-is-working)
+ * [Description of the problem](#description-of-the-problem)
+ * [Project Objectives](#project-objectives)
+ * [Running the Project](#running-the-model-locally)
+ * [Cloud deployment](#local-deployment)
 
 
 Repo contains the following:
@@ -113,9 +110,9 @@ and optimized hyperparameters to produce a better model (based on the RMSE crite
 
 ## Local deployment
 
-## AWS Deployment
+## Cloud deployment
 
-# What else can I do?
+### What else can I do?
 * Send a pull request.
 * If you liked this project, give a ⭐.
 
