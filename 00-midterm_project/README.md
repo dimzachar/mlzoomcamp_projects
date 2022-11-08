@@ -130,7 +130,14 @@ pipenv run python train.py
 pipenv run bentoml serve predict.py:svc
 ```
 
-and test it with the data in the `test.json` and `test2.json`.
+and test it with the data in the `test.json` and `test2.json`
+
+![service](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/BentoML-Prediction-Service.png)
+![service2](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/BentoML-Prediction-Service%20(1).png)
+![service3](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/BentoML-Prediction-Service%20(2).png)
+![service4](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/BentoML-Prediction-Service%20(3).png)
+![service4](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/BentoML-Prediction-Service%20(4).png)
+![service4](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/BentoML-Prediction-Service%20(5).png)
 
 Optional: Run locust to test server, make sure you have installed it
 ```bash
@@ -138,6 +145,8 @@ pipenv run locust -H http://localhost:3000
 ```
 
 and check it out on [browser](http://localhost:8089)
+
+![locust](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/BentoML-Prediction-Service%20(5).png)
 
 ## Production deployment
 
@@ -160,6 +169,9 @@ Replace tag with the tag you get from bentoml build.
 ### Cloud deployment 
 
 In order to deploy it to AWS we push the docker image. Make sure you have an account and install AWS CLI.
+![registry](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/Elastic-Container-Registry%20.png)
+![push](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/Elastic-Container-push.png)
+
 Then, tag the latest image which you find with
 
 ```bash
