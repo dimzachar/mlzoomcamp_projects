@@ -105,12 +105,70 @@ Multiple models were trained:
 
 and optimized hyperparameters to produce a better model (based on the RMSE criterion) from a base model.
 
-## Running the model locally
-
-
 ## Local deployment
 
-## Cloud deployment
+1. Download repo
+```bash
+git clone https://github.com/dimzachar/mlzoomcamp_projects.git
+```
+
+2. Install pipenv and dependencies
+```bash
+pip install pipenv
+pipenv install
+```
+
+3. Enter shell and run train.py
+
+```bash
+pipenv shell
+pipenv run python train.py
+```
+
+4. Then, get the service running on localhost
+
+```bash
+pipenv run bentoml serve predict.py:svc
+```
+
+and test it with the data in the `test.json` and `test2.json`.
+
+Optional: Run locust to test server, make sure you have installed it
+```bash
+pipenv run locust -H http://localhost:3000
+```
+
+and check it out on [browser](http://localhost:8089)
+
+## Production deployment
+
+First we need to build the bento with
+
+```bash
+pipenv run bentoml build
+```
+
+### Docker container
+
+Once we have the bento tag we containerize it
+
+```bash
+pipenv run bentoml containerize  energy_efficiency_regressor:tag --platform=linux/amd64
+```
+
+Replace tag with the tag you get from bentoml build.
+
+### Cloud deployment 
+
+In order to deploy it to AWS we push the docker image. Make sure you have an account and install AWS CLI.
+Then, tag the latest image which you find with
+
+```bash
+pipenv run docker images
+```
+and push the image. Follow instructions from video to serve the mode with AWS Fargate cluster and create the task. Once the task is running, you will get a public IP.
+
+
 
 ### What else can I do?
 * Send a pull request.
