@@ -124,6 +124,8 @@ pipenv shell
 pipenv run python train.py
 ```
 
+![cli](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/cli.png)
+
 4. Then, get the service running on [localhost](http://localhost:3000)
 
 ```bash
@@ -164,6 +166,8 @@ pipenv run bentoml containerize  energy_efficiency_regressor:tag --platform=linu
 ```
 
 Replace tag with the tag you get from bentoml build.
+
+![cli3](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/cli3.png)
 
 ### Cloud deployment 
 
