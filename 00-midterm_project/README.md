@@ -136,8 +136,7 @@ and test it with the data in the `test.json` and `test2.json`
 ![service2](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/BentoML-Prediction-Service%20(1).png)
 ![service3](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/BentoML-Prediction-Service%20(2).png)
 ![service4](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/BentoML-Prediction-Service%20(3).png)
-![service4](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/BentoML-Prediction-Service%20(4).png)
-![service4](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/BentoML-Prediction-Service%20(5).png)
+
 
 Optional: Run locust to test server, make sure you have installed it
 ```bash
@@ -146,7 +145,7 @@ pipenv run locust -H http://localhost:3000
 
 and check it out on [browser](http://localhost:8089)
 
-![locust](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/BentoML-Prediction-Service%20(5).png)
+![locust](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/Locust-for-locustfile-py.png)
 
 ## Production deployment
 
