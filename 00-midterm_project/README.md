@@ -16,17 +16,16 @@ Repo contains the following:
 * `notebook.ipynb` a Jupyter Notebook with the data analysis and models
 * Script `train.py` (suggested name)
   * Training the final model
-  * Saving it to a file (e.g. pickle) or saving it with specialized software (BentoML)
+  * Saving it with BentoML
 * Script `predict.py` (suggested name)
   * Loading the model
-  * Serving it via a web serice (with Flask or specialized sofware - BentoML, KServe, etc)
+  * Serving it via a web serice
 * Files with dependencies
   * `Pipenv` and `Pipenv.lock` if you use Pipenv
   * `bentofile.yaml` if you use BentoML
   * or equivalents: conda environment file, requirements.txt or pyproject.toml
 * `Dockerfile` for running the service
-* Deployment
-  * URL to the service your deployed or
+* Instructions for Production deployment
   * Video or image of how you interact with the deployed service
 
 
@@ -125,7 +124,7 @@ pipenv shell
 pipenv run python train.py
 ```
 
-4. Then, get the service running on localhost
+4. Then, get the service running on [localhost](http://localhost:3000)
 
 ```bash
 pipenv run bentoml serve predict.py:svc
