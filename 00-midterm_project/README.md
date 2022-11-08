@@ -4,7 +4,7 @@
  * [Description of the problem](#description-of-the-problem)
  * [Project Objectives](#project-objectives)
  * [Running the Project](#running-the-model-locally)
- * [Cloud deployment](#local-deployment)
+ * [Cloud deployment](#cloud-deployment)
 
 
 Repo contains the following:
@@ -121,7 +121,7 @@ Made by [Dimitrios Zacharenakis](https://github.com/dimzachar)
 **Connect with me:**
 
 <p align="center">
-  <a href="https://www.linkedin.com/in/zacharenakis/" target="blank"><img align="center" src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.maryville.edu%2Fsocialmedia%2Flinkedin-logo-1-550x550-300x300%2F&psig=AOvVaw0lV21mXPy1qmVl0gTPz_Nb&ust=1668015149845000&source=images&cd=vfe&ved=0CA0QjRxqFwoTCNDG2OmOn_sCFQAAAAAdAAAAABAD" height="30" width="30" /></a>
+  <a href="https://www.linkedin.com/in/zacharenakis/" target="blank"><img align="center" src="https://cdn-icons-png.flaticon.com/512/174/174857.png" height="30" width="30" /></a>
   
 </p>
            
