@@ -208,12 +208,14 @@ and push the image.
 
 Next, go to Elastic Container Service to create a cluster 
 ![ECS](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/Amazon-ECS.png)
+
 Select Networking only and go to next step. 
 ![ECS1](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/Amazon-ECS%20(1).png)
 
 Then, choose your cluster name, hit create and then view cluster
 ![ECS2](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/Amazon-ECS%20(2).png)
 ![ECS3](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/Amazon-ECS%20(3).png)
+
 Now, you need to create a new task and choose Fargate
 ![ECS4](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/Amazon-ECS%20(4).png)
 ![ECS5](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/Amazon-ECS%20(5).png)
