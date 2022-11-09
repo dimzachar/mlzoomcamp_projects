@@ -145,7 +145,7 @@ pipenv run bentoml serve predict.py:svc
 
 and test it with the data in the `test.json` and `test2.json`
 
-![service](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/BentoML-Prediction-Service.png)
+![service](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/BentoML-Prediction-Service%20(4).png)
 ![service2](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/BentoML-Prediction-Service%20(1).png)
 ![service3](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/BentoML-Prediction-Service%20(2).png)
 ![service4](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/BentoML-Prediction-Service%20(3).png)
