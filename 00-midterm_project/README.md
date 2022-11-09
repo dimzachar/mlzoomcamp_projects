@@ -216,7 +216,7 @@ Then, choose your cluster name, hit create and then view cluster
 ![ECS2](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/Amazon-ECS%20(2).png)
 ![ECS3](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/Amazon-ECS%20(3).png)
 
-Now, you need to create a new task and choose Fargate
+Now, you need to create a new task and choose FARGATE
 ![ECS4](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/Amazon-ECS%20(4).png)
 ![ECS5](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/Amazon-ECS%20(5).png)
 
@@ -230,7 +230,7 @@ Enter
 ![ECS6](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/Amazon-ECS%20(6).png)
 
 Then, select add container and choose a container name.
-On memory limits select 256 Soft limit and 3000 on Port mappings with tcp.
+On memory limits select 256 Soft limit and 3000 on Port mappings with TCP.
 ![ECS7](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/Amazon-ECS%20(7).png)
 
 For the image you need to have pushed the image and find the URI on your created repo
@@ -242,7 +242,7 @@ Click add and then create. Go back to clusters,select the created cluster and go
 
 Choose run new task and select
 
-* Launch type Fargate
+* Launch type FARGATE
 * Linux as operating system family
 * Cluster VPC and Subnets
 
