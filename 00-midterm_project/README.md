@@ -7,7 +7,7 @@
  * [Production deployment](#production-deployment-with-bentoml)
    * [Docker container](#docker-container)
    * [Cloud deployment](#cloud-deployment)
- * [Further development](#further-deployment)
+ * [Further development](#further-development)
  * [More](#what-else-can-i-do)
 
 
