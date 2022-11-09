@@ -25,6 +25,7 @@ Repo contains the following:
   * Serving it via a web serice
 * Script `locustfile.py`
   * Test the service
+* Json files `test.json` and `test2.json` to test the service. Change them to produce another prediction.
 * Files with dependencies
   * `Pipenv` and `Pipenv.lock` if you use Pipenv
   * `bentofile.yaml` required for BentoML
@@ -106,7 +107,7 @@ Multiple models were trained:
 * Random Forest
 * Xgboost
 
-and optimized hyperparameters to produce a better model (based on the RMSE criterion, lower the better) from a base model.
+and optimized hyperparameters to produce a better model (based on the RMSE criterion, lower the better) from a base model. The best model (xgboost) was trained and saved with BentoML in order to be deployed.
 
 ## Local deployment
 
