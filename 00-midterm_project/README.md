@@ -255,7 +255,7 @@ Go to Security groups and add a custom TCP with port 3000 and save
 
 Finally, hit run task.
 
-Once the task is running, you will get a public IP.
+Once the task is running, you will get a public IP for the deployed service.
 
 https://user-images.githubusercontent.com/113017737/200716975-7d780f6e-6d6d-4aeb-ba0e-843f34f240de.mp4
 
@@ -268,12 +268,12 @@ I will update this repo with instructions on how to publish on heroku or other s
 * Send a pull request.
 * If you liked this project, give a ⭐.
 
-Made by [Dimitrios Zacharenakis](https://github.com/dimzachar)
-
 **Connect with me:**
 
 <p align="center">
   <a href="https://www.linkedin.com/in/zacharenakis/" target="blank"><img align="center" src="https://cdn-icons-png.flaticon.com/512/174/174857.png" height="30" width="30" /></a>
+  <a href="https://github.com/dimzachar" target="blank"><img align="center" src="https://cdn-icons-png.flaticon.com/512/25/25231.png" height="30" width="30" /></a>
+
   
 </p>
            
