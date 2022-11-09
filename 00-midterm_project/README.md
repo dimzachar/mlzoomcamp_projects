@@ -4,9 +4,10 @@
  * [Description of the problem](#description-of-the-problem)
  * [Project Objectives](#project-objectives)
  * [Local deployment](#local-deployment)
- * [Production deployment](#production-deployment)
+ * [Production deployment](#production-deployment-with-bentoml)
    * [Docker container](#docker-container)
    * [Cloud deployment](#cloud-deployment)
+ * [Further development](#further-deployment)
  * [More](#what-else-can-i-do)
 
 
