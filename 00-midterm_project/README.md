@@ -3,8 +3,11 @@
 ## Table of Contents
  * [Description of the problem](#description-of-the-problem)
  * [Project Objectives](#project-objectives)
- * [Running the Project](#running-the-model-locally)
- * [Cloud deployment](#cloud-deployment)
+ * [Local deployment](#local-deployment)
+ * [Production deployment](#production-deployment)
+   * [Docker container](#docker-container)
+   * [Cloud deployment](#cloud-deployment)
+ * [More](#what-else-can-i-do)
 
 
 Repo contains the following:
