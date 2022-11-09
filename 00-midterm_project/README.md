@@ -200,6 +200,8 @@ pipenv run docker images
 ```
 and push the image. Follow instructions from [video](https://www.youtube.com/watch?v=aF-TfJXQX-w&list=PL3MmuxUbc_hIhxl5Ji8t4O6lPAOpHaCLR&index=72) to serve the mode with AWS Fargate cluster and create the task. Once the task is running, you will get a public IP.
 
+![video](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/cloud.mp4)
+
 
 
 ### What else can I do?
