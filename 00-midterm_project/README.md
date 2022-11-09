@@ -28,9 +28,7 @@ Repo contains the following:
   * Test the service
 * Json files `test.json` and `test2.json` to test the service. Change them to produce another prediction.
 * Files with dependencies
-  * `Pipenv` and `Pipenv.lock` if you use Pipenv
   * `bentofile.yaml` required for BentoML
-* `Dockerfile` for running the service
 * Instructions for Production deployment
   * Video or image of how you interact with the deployed service
 
