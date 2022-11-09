@@ -189,22 +189,43 @@ Replace tag with the tag you get from bentoml build.
 
 ### Cloud deployment 
 
-In order to deploy it to AWS we push the docker image. Make sure you have an account and install AWS CLI. Instructions can be found [here](https://mlbookcamp.com/article/aws).
+In order to deploy it to AWS we push the docker image. Make sure you have an account and install AWS CLI. Instructions can be found [here](https://mlbookcamp.com/article/aws) and the instructions to publish are described [here](https://www.youtube.com/watch?v=aF-TfJXQX-w&list=PL3MmuxUbc_hIhxl5Ji8t4O6lPAOpHaCLR&index=72).
+
+First, reate a repo on Amazon Elastic Container Registry (ECR) with an appropriate name
+![registry2](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/Elastic-Container-Registry%20(2).png)
 
 ![registry](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/Elastic-Container-Registry%20.png)
-![push](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/Elastic-Container-push.png)
 
-Then, tag the latest image which you find with
+You will find the push commands there to push the docker image
+![ECR](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/Elastic-Container-push.png)
+
+Then, tag the latest image which you find on your system with
 
 ```bash
 pipenv run docker images
 ```
-and push the image. Follow instructions from [video](https://www.youtube.com/watch?v=aF-TfJXQX-w&list=PL3MmuxUbc_hIhxl5Ji8t4O6lPAOpHaCLR&index=72) to serve the mode with AWS Fargate cluster and create the task. Once the task is running, you will get a public IP.
+and push the image.  
+
+Next, go to Elastic Container Service to create a cluster 
+![ECS](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/Amazon-ECS.png)
+Select Networking only and go to next step. 
+![ECS1](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/Amazon-ECS%20(1).png)
+
+Then, choose your cluster name, hit create and then view cluster
+![ECS2](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/Amazon-ECS%20(2).png)
+![ECS3](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/Amazon-ECS%20(3).png)
+Now, you need to create a new task and choose Fargate
+![ECS4](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/Amazon-ECS%20(4).png)
+![ECS5](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/Amazon-ECS%20(5).png)
+
+Once the task is running, you will get a public IP.
 
 https://user-images.githubusercontent.com/113017737/200716975-7d780f6e-6d6d-4aeb-ba0e-843f34f240de.mp4
 
 
+## Further development
 
+I will update this repo with instructions on how to publish on heroku or other service and also create a Streamlit app (frontend) after the project deadline.
 
 ### What else can I do?
 * Send a pull request.
