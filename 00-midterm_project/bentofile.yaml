@@ -1,0 +1,14 @@
+service: "predict:svc"
+labels:
+    owner: bentoml-team
+    project: gallery
+include:
+- "*.py" 
+python:
+    packages: 
+    # - scikit-learn
+    # - xgboost
+    # - pydantic
+    - scikit-learn==1.1.3
+    - xgboost==1.7.1
+    - pydantic==1.10.2

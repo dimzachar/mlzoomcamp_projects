@@ -15,18 +15,19 @@ Repo contains the following:
 * `README.md` with
   * Description of the problem
   * Instructions on how to run the project
-* Data `notebook.csv`
+* Data `ENB2012_data.csv`
 * `notebook.ipynb` a Jupyter Notebook with the data analysis and models
 * Script `train.py` (suggested name)
   * Training the final model
-  * Saving it with BentoML
+  * Saving model with BentoML
 * Script `predict.py` (suggested name)
   * Loading the model
   * Serving it via a web serice
+* Script `locustfile.py`
+  * Test the service
 * Files with dependencies
   * `Pipenv` and `Pipenv.lock` if you use Pipenv
-  * `bentofile.yaml` if you use BentoML
-  * or equivalents: conda environment file, requirements.txt or pyproject.toml
+  * `bentofile.yaml` required for BentoML
 * `Dockerfile` for running the service
 * Instructions for Production deployment
   * Video or image of how you interact with the deployed service
@@ -109,15 +110,21 @@ and optimized hyperparameters to produce a better model (based on the RMSE crite
 
 ## Local deployment
 
+All development was done on Windows with conda.
+
+```bash
+conda activate ml-zoomcamp
+```
+
 1. Download repo
 ```bash
 git clone https://github.com/dimzachar/mlzoomcamp_projects.git
 ```
 
-2. Install pipenv and dependencies
+2. For the virtual environment, I utilized pipenv. If you want to use the same venv as me, install pipenv and dependencies, navigate to the folder with the given files:
 ```bash
 pip install pipenv
-pipenv install
+pipenv install numpy pandas seaborn bentoml scikit-learn==1.1.3 xgboost==1.7.1 pydantic==1.10.2
 ```
 
 3. Enter shell and run train.py
@@ -154,7 +161,12 @@ and check it out on [browser](http://localhost:8089)
 
 ![locust](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/Locust-for-locustfile-py.png)
 
-## Production deployment
+## Production deployment with BentoML
+
+You need to have Docker installed (I used Docker Desktop with WSL2) 
+* [Docker Installation Windows](https://docs.docker.com/desktop/install/windows-install)
+
+and open for the following:
 
 First we need to build the bento with
 
@@ -185,7 +197,7 @@ Then, tag the latest image which you find with
 ```bash
 pipenv run docker images
 ```
-and push the image. Follow instructions from video to serve the mode with AWS Fargate cluster and create the task. Once the task is running, you will get a public IP.
+and push the image. Follow instructions from [video](https://www.youtube.com/watch?v=aF-TfJXQX-w&list=PL3MmuxUbc_hIhxl5Ji8t4O6lPAOpHaCLR&index=72) to serve the mode with AWS Fargate cluster and create the task. Once the task is running, you will get a public IP.
 
 
 
