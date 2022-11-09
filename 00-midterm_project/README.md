@@ -189,7 +189,8 @@ Replace tag with the tag you get from bentoml build.
 
 ### Cloud deployment 
 
-In order to deploy it to AWS we push the docker image. Make sure you have an account and install AWS CLI.
+In order to deploy it to AWS we push the docker image. Make sure you have an account and install AWS CLI. Instructions can be found [here](https://mlbookcamp.com/article/aws).
+
 ![registry](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/Elastic-Container-Registry%20.png)
 ![push](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/Elastic-Container-push.png)
 
