@@ -1,4 +1,4 @@
-## Midterm Project mlzoomcamp
+## Midterm Project mlzoomcamp Energy Efficiency of Buildings
 
 ## Table of Contents
  * [Description of the problem](#description-of-the-problem)
@@ -105,7 +105,7 @@ Multiple models were trained:
 * Random Forest
 * Xgboost
 
-and optimized hyperparameters to produce a better model (based on the RMSE criterion) from a base model.
+and optimized hyperparameters to produce a better model (based on the RMSE criterion, lower the better) from a base model.
 
 ## Local deployment
 
