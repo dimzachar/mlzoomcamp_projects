@@ -139,6 +139,8 @@ and test it with the data in the `test.json` and `test2.json`
 ![service3](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/BentoML-Prediction-Service%20(2).png)
 ![service4](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/BentoML-Prediction-Service%20(3).png)
 
+The output here is showing the total load and prints low if heating+cooling load is below the 25th percentile, average if between 25th and 75th percentile or high if it is greater than 75th percentile. You can check the exact prediction on the cli.
+
 
 Optional: Run locust to test server, make sure you have installed it
 ```bash
