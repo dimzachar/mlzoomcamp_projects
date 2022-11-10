@@ -130,18 +130,18 @@ git clone https://github.com/dimzachar/mlzoomcamp_projects.git
 ```bash
 cd 00-midterm_project
 pip install pipenv
-pipenv install numpy pandas seaborn bentoml tqdm scikit-learn==1.1.3 xgboost==1.7.1 pydantic==1.10.2
-```
-To open the `notebook.ipynb` and run it you need to have installed:
-```bash
-pipenv install jupyter --dev
-pipenv run jupyter notebook
+pipenv install numpy pandas seaborn bentoml tqdm jupyter scikit-learn==1.1.3 xgboost==1.7.1 pydantic==1.10.2
 ```
 
-3. Enter shell and run train.py
+3. Enter shell. To open the `notebook.ipynb` and see all the models
 
 ```bash
 pipenv shell
+pipenv run jupyter notebook
+```
+
+For the following you need to run train.py
+```bash
 pipenv run python train.py
 ```
 
