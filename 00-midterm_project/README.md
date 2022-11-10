@@ -132,6 +132,11 @@ cd 00-midterm_project
 pip install pipenv
 pipenv install numpy pandas seaborn bentoml tqdm scikit-learn==1.1.3 xgboost==1.7.1 pydantic==1.10.2
 ```
+To open the `notebook.ipynb` and run it you need to have installed:
+```bash
+pipenv install jupyter --dev
+pipenv run jupyter notebook
+```
 
 3. Enter shell and run train.py
 
