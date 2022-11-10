@@ -29,6 +29,7 @@ Repo contains the following:
 * Json files `test.json` and `test2.json` to test the service. Change them to produce another prediction.
 * Files with dependencies
   * `bentofile.yaml` required for BentoML
+  * `env_project.yml` conda environment (optional)
 * Instructions for Production deployment
   * Video or image of how you interact with the deployed service
 
@@ -112,9 +113,13 @@ and optimized hyperparameters to produce a better model (based on the RMSE crite
 
 All development was done on Windows with conda.
 
+You can either recreate my environment by
 ```bash
-conda activate ml-zoomcamp
+conda env create -f env_project.yml
+conda activate project
 ```
+
+or do it on your own environment.
 
 1. Download repo
 ```bash
@@ -123,8 +128,9 @@ git clone https://github.com/dimzachar/mlzoomcamp_projects.git
 
 2. For the virtual environment, I utilized pipenv. If you want to use the same venv as me, install pipenv and dependencies, navigate to the folder with the given files:
 ```bash
+cd 00-midterm_project
 pip install pipenv
-pipenv install numpy pandas seaborn bentoml scikit-learn==1.1.3 xgboost==1.7.1 pydantic==1.10.2
+pipenv install numpy pandas seaborn bentoml tqdm scikit-learn==1.1.3 xgboost==1.7.1 pydantic==1.10.2
 ```
 
 3. Enter shell and run train.py
@@ -154,6 +160,7 @@ The output here is showing the total load and prints low if heating+cooling load
 
 Optional: Run locust to test server, make sure you have installed it
 ```bash
+pipenv install locust
 pipenv run locust -H http://localhost:3000
 ```
 
