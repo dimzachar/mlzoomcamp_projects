@@ -1,6 +1,9 @@
 ## Capstone Project mlzoomcamp Image Classification 
 
-![coll](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/01-capstone_project/Images/collage.jpg)
+<p align="center">
+<img src="https://github.com/dimzachar/mlzoomcamp_projects/blob/master/01-capstone_project/Images/collage.jpg">
+</p>
+
 
 ## Table of Contents
  * [Description of the problem](#description-of-the-problem)
