@@ -1,6 +1,6 @@
 ## Documentation
 
-*build_model function
+* build_model function
 
 I used the following architecture for a CNN model used for image classification tasks. 
 

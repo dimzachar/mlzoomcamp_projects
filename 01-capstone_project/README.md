@@ -1,6 +1,6 @@
 ## Capstone Project mlzoomcamp Image Classification 
 
-![coll](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/cli.png)
+![coll](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/01-capstone_project/Images/collage.jpg)
 
 ## Table of Contents
  * [Description of the problem](#description-of-the-problem)
@@ -97,11 +97,12 @@ Alternative (optional): You can install all dependencies with `pip` with the fol
 If you want to use the same venv as me, install pipenv and dependencies, navigate to the folder with the given files:
 
 Before you begin you need to download the data if you want to run the notebook. Folder structure should look like this
-
+```
 └───data
     └───train
         ├───Pebbles
         └───Shells
+```
 
 Once you download the .zip file from Kaggle, create a data folder and inside a train folder and move the 2 folders from the .zip inside the train folder.
 
