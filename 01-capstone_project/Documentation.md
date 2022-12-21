@@ -58,3 +58,39 @@ We define a function plot that takes four arguments:
 The plot function first extracts the accuracy and loss data from the history object, and then creates two subplots: one for accuracy and one for loss. For each subplot, it plots the training and validation data and saves the figure to a file. The plot function does not show the figure; it only saves it to a file.
 
 After defining the plot function, the code iterates over the items in the scores dictionary and calls the plot function for each item, passing in the corresponding history, label, and figure number.
+
+* <h1>plot_image_extension_frequency</h1>
+
+<p>This function plots the frequency of different image extensions in a given directory.</p>
+
+<h2>Usage</h2>
+
+<pre><code>plot_image_extension_frequency(path)
+</code></pre>
+
+<h2>Parameters</h2>
+
+<ul>
+  <li><code>path</code>: (required) The path to the directory to be scanned.</li>
+</ul>
+
+<h2>Example</h2>
+
+<pre><code>plot_image_extension_frequency('./Images/train')
+</code></pre>
+
+<h2>Output</h2>
+
+<p>A bar chart showing the frequency of each image extension in the given directory.</p>
+
+<h2>Notes</h2>
+
+<ul>
+  <li>The function uses the <code>os.walk</code> function to iterate over the files and subfolders in the given <code>path</code>.</li>
+  <li>The function extracts the extension of each file using the <code>os.path.splitext</code> function and adds it to a list called <code>extensions</code>.</li>
+  <li>The function uses the <code>collections.Counter</code> function to count the frequency of each extension in the <code>extensions</code> list.</li>
+  <li>The function sets a list of colors for the different extensions and uses a <code>for</code> loop to iterate over the unique extensions.</li>
+  <li>For each extension, the function plots a bar chart using <code>matplotlib</code>'s <code>bar</code> function. The function uses the <code>extension</code> as the x-axis label and the frequency of the extension as the y-axis label. The color of the bar is chosen from the <code>colors</code> list using the index <code>i</code> modulo the length of the <code>colors</code> list.</li>
+  <li>The function adds labels to the x-axis, y-axis, and the chart title using <code>matplotlib</code>'s <code>xlabel</code>, <code>ylabel</code>, and <code>title</code> functions.</li>
+  <li>The function displays the plot using <code>matplotlib</code>'s <code>show</code> function.</li>
+</ul>

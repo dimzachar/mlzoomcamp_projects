@@ -99,7 +99,7 @@ Alternative (optional): You can install all dependencies with `pip` with the fol
 
 If you want to use the same venv as me, install pipenv and dependencies, navigate to the folder with the given files:
 
-Before you begin you need to download the data if you want to run the notebook. Folder structure should look like this
+Before you begin you need to download the data. Folder structure should look like this
 ```
 └───data
     └───train
