@@ -34,17 +34,11 @@ The model is then compiled with an Adam optimizer and a binary cross-entropy los
   <li><code>restore_from_checkpoint</code> (optional, default=False): A flag to indicate whether to restore the model weights from a checkpoint file. If this flag is set to <code>True</code>, the function will find the latest checkpoint file in the <code>checkpoint_dir</code> directory and load the model weights from it.</li>
   <li><code>callbacks</code> : a list of callbacks to use during training. If this parameter is not provided, the function will create the ModelCheckpoint, EarlyStopping, and TensorBoard callbacks.</li>
 
-
-
 </ul>
-The function first checks if the checkpoint_dir and log_dir directories exist, and creates them if they do not. It then checks the value of the restore_from_checkpoint flag and, if it is set to True, searches for the latest checkpoint file in the checkpoint_dir directory with the same model name and restores the model weights from it.
-
-The function then checks the value of the delete_files flag. If it is set to True, the function deletes all existing checkpoint files with the same model name in the checkpoint_dir directory. If delete_files is not set or is set to False, the function appends an underscore and a number to the end of model_name if there are any existing checkpoint files with the same model name in the checkpoint_dir directory. The number is equal to the number of such files in the directory.
-
-The function then creates a ModelCheckpoint callback and specifies the checkpoint_dir directory and the model_name as the file name for the checkpoint file. The callback is set to save the best model weights only and to save the weights only, not the entire model. It is also set to monitor the validation accuracy and save the weights only when the validation accuracy improves.
-
-The function also creates an EarlyStopping callback and specifies the number of epochs to wait before stopping the training if the validation accuracy does not improve. Finally, the function creates a TensorBoard callback and specifies the log_dir directory as the location for the TensorBoard logs.
-
+<p>The function first checks if the <code>checkpoint_dir</code> and <code>log_dir</code> directories exist, and creates them if they do not. It then checks the value of the <code>restore_from_checkpoint</code> flag and, if it is set to True, searches for the latest checkpoint file in the <code>checkpoint_dir</code> directory with the same model name and restores the model weights from it.</p>
+<p>The function then checks the value of the <code>delete_files</code> flag. If it is set to True, the function deletes all existing checkpoint files with the same model name in the <code>checkpoint_dir</code> directory. If <code>delete_files is not set or is set to False, the function appends an underscore and a number to the end of <code>model_name</code> if there are any existing checkpoint files with the same model name in the <code>checkpoint_dir</code> directory. The number is equal to the number of such files in the directory.</p>
+<p>The function then creates a <code>ModelCheckpoint</code> callback and specifies the <code>checkpoint_dir</code> directory and the <code>model_name as the file name for the checkpoint file. The callback is set to save the best model. It is also set to monitor the validation accuracy and save the model when the validation accuracy improves.</p>
+<p>The function also creates an <code>EarlyStopping</code> callback and specifies the number of epochs to wait before stopping the training if the validation accuracy does not improve. Finally, the function creates a <code>TensorBoard</code> callback and specifies the <code>log_dir</code> directory as the location for the <code>TensorBoard</code> logs.</p>
 
 <p>The <code>checkpoint_weights</code> function returns a list containing the <code>ModelCheckpoint</code>, <code>EarlyStopping</code>, and <code>TensorBoard</code> callbacks, which you can pass to the <code>fit</code> function of your model to use during training.</p>
 <p>Here is an example of how to use the <code>checkpoint_weights</code> function to set up the callbacks for model training:</p>
