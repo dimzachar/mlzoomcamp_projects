@@ -1,18 +1,16 @@
 ## Documentation
 
-* build_model function
+<h1>build_model  function</h1>
 
-I used the following architecture for a CNN model used for image classification tasks. 
+<p>This is a function that creates a model for image classification using a pre-trained model (specified by base_model - <code>Xception</code> from Keras Applications in particular) as a base model, with some additional inner layers and a final output layer. The model takes a tuple of input data input_shape (e.g. (150, 150, 3) for images with given resolution and 3 color channels) as input and returns a compiled model.</p>
 
-It begins with a pre-trained model Xception from Keras Applications, which serves as the base model for the architecture. The base model's weights are initialized with the 'imagenet' weights and its top layers are not included in the model. The input shape of the model is specified as a tuple of values, which defines the size and number of channels of the input data (e.g. (150, 150, 3) for images with given resolution and 3 color channels).
+<p>The pre-trained base model (base_model) is first set to be not trainable. Then, an input layer is defined using the input shape. The base model is then applied to the input data, but training is set to False so that the base model's weights are not updated during training.</p>
 
-The base model is set to be not trainable, meaning that its weights will not be updated during the training process. The model then takes in an input with the specified shape and passes it through the base model, setting the 'training' parameter to False to indicate that the base model should not be updated.
+<p>The output of the base model is passed through a global average pooling layer, which reduces the spatial dimensions of the output by taking the average value over all spatial dimensions. This is followed by an inner dense layer with size_inner units and a ReLU activation function.</p>
 
-The output of the base model is then passed through a global average pooling layer, which reduces the spatial dimensions of the output while preserving the channel dimensions. This is followed by a dense layer with a specified number of units and a ReLU activation function.
+<p>If include_dropout is set to True, a dropout layer with a dropout rate of droprate is applied to the output of the inner dense layer. Otherwise, the output of the inner dense layer is passed directly to the output layer. The output layer is a dense layer with a single unit and a sigmoid activation function, which will produce a binary output (either 0 or 1).</p>
 
-The model also includes an optional dropout layer with a specified dropout rate, which randomly sets a fraction of the inputs to zero during training in order to prevent overfitting. The output of the dropout layer (or the output of the dense layer if the dropout layer is not included) is then passed through a final dense layer with a single unit and a sigmoid activation function, which outputs a probability value between 0 and 1.
-
-The model is then compiled with an Adam optimizer and a binary cross-entropy loss function, and its performance is evaluated using accuracy metrics. The model's summary is also printed to provide a summary of the model's layers and their sizes.
+<p>Finally, the model is compiled with an Adam optimizer (using the specified learning_rate) and a binary cross-entropy loss function. The model's summary is then printed and the compiled model is returned.</p>
 
 
 <h1>checkpoint_weight function</h1>
@@ -45,10 +43,10 @@ The model is then compiled with an Adam optimizer and a binary cross-entropy los
 <pre><code>callbacks = checkpoint_weights(model_name='my_model', checkpoint_dir='checkpoints', log_dir='logs')
 
 model.fit(train_generator,
-                                epochs=100,
-                                validation_data=validation_generator,
-                                callbacks=callbacks,
-                                steps_per_epoch=len(train_generator))
+	  epochs=100,
+	  validation_data=validation_generator,
+          callbacks=callbacks,
+          steps_per_epoch=len(train_generator))
 </code></pre>
 <p>This will train the model using the provided training and validation data, and save the best model weights to a file in the <code>checkpoints</code> directory with a name that includes the epoch number and the validation accuracy. If the validation accuracy does not improve after 3 epochs, the training will be stopped and the best model will be restored. In addition, the training progress will be logged to the <code>logs</code> directory and can be visualized in TensorBoard.</p>
 
@@ -80,18 +78,16 @@ It appears that the model is trained using a static graph defined by the train_s
                       include_dropout=True)
 </code></pre>
 
-* plot function 
+* <h1>plot_metrics</h1>
 
-We define a function plot that takes four arguments:
+<p>We define a function <code>plot_metrics</code> that takes in a history object, label, maximum number of epochs, and figure number, and plots the accuracy and loss for training and validation data on separate subplots of a single figure.</p>
+<p>The <code>history</code> object is expected to have the keys <code>'accuracy'</code>, <code>'val_accuracy'</code>, <code>'loss'</code>, and <code>'val_loss'</code>, which represent the accuracy and loss for training and validation data, respectively. These are plotted using the <code>plot</code> function of the <code>matplotlib</code> library, with the <code>x</code>-axis representing the epoch number and the <code>y</code>-axis representing either the accuracy or loss.</p>
+<p>The <code>label</code> parameter is a string that describes the hyperparameters used in the model, such as the learning rate and dropout rate. This label is used as the label for the plotted lines.</p>
+<p>The <code>max_epochs</code> parameter is used to set the <code>x</code>-axis limits of the plot to ensure that all subplots have the same <code>x</code>-axis range.</p>
+<p>The <code>fig_num</code> parameter specifies the figure number, which is used to save the figure to a file with a corresponding name.</p>
+<p>Finally, the code sets the size of the figure to be twice the original size, and loops through the <code>scores</code> dictionary, calling the <code>plot</code> function for each item in the dictionary and passing in the corresponding history object, label, maximum number of epochs, and figure number. The resulting plots are then displayed using the <code>show</code> function of the <code>matplotlib</code> library.</p>
 
-    history: an object containing the training and validation data for a model, typically returned by the fit method of a Keras model.
-    label: a string used to label the data in the plots.
-    max_epochs: an integer representing the maximum number of epochs to plot.
-    fig_num: an integer representing the number of the figure being plotted.
 
-The plot function first extracts the accuracy and loss data from the history object, and then creates two subplots: one for accuracy and one for loss. For each subplot, it plots the training and validation data and saves the figure to a file. The plot function does not show the figure; it only saves it to a file.
-
-After defining the plot function, the code iterates over the items in the scores dictionary and calls the plot function for each item, passing in the corresponding history, label, and figure number.
 
 <h1>plot_image_extension_frequency</h1>
 
@@ -128,3 +124,32 @@ After defining the plot function, the code iterates over the items in the scores
   <li>The function adds labels to the x-axis, y-axis, and the chart title using <code>matplotlib</code>'s <code>xlabel</code>, <code>ylabel</code>, and <code>title</code> functions.</li>
   <li>The function displays the plot using <code>matplotlib</code>'s <code>show</code> function.</li>
 </ul>
+
+<h1>disp_samples</h1>
+
+<ul>
+  <li>It gets the list of class names from the train_generator object, which is a generator that returns batches of images and labels for training a machine learning model. The <code>class_indices</code> attribute of <code>train_generator</code> is a dictionary that maps class names to integer labels.</li>
+  <li>It defines a function <code>disp_images</code> that takes in a generator and a list of class names as arguments. The generator is expected to return batches of images and labels.</li>
+  <li>Inside the <code>disp_images</code> function, the code creates a figure with a size of 10x10 and retrieves the first batch of images and labels from the generator using <code>next(iter(generator))</code>.</li>
+  <li>The labels are converted to integers and the first 9 images in the batch are plotted in a 3x3 grid using a loop. For each image, the code displays the image using <code>plt.imshow</code> and sets the title of the subplot to be the corresponding class name using <code>plt.title</code>. The axis labels are turned off using <code>plt.axis("off")</code>.</li>
+  <li>Finally, the <code>disp_images</code> function is called with the <code>validation_generator</code> and <code>class_names</code> as arguments, which plots the images using the class names.</li>
+</ul>
+
+
+<h1>show_augmented_images</h1>
+
+  <p>
+   We define a function called <code>show_augmented_images</code> that takes in three arguments: <code>directory</code>, <code>img_input</code>, and <code>class_name</code>.
+  </p>
+  <p>
+    The function first constructs a path to the specified <code>class_name</code> directory by joining <code>directory</code> and <code>class_name</code> using <code>os.path.join</code>. It then uses a list comprehension to get a list of file names within the <code>class_name</code> directory.
+  </p>
+  <p>
+    Next, the function randomly selects one of the file names from the list using <code>random.choice</code> and loads the corresponding image using the <code>image.load_img</code> function from the <code>keras.preprocessing.image</code> module. It then converts the image to a numpy array using the <code>image.img_to_array</code> function.
+  </p>
+  <p>
+    The numpy array is then reshaped to be compatible with the <code>train_datagen.flow</code> method, which generates augmented versions of the input image. The reshaped array is passed as an argument to <code>train_datagen.flow</code>, along with a batch size of 1.
+  </p>
+  <p>
+    The function then iterates through the generated augmented images using a for loop and displays each image using the <code>plt.imshow</code> function from the <code>matplotlib</code> module. The loop is set to break after showing two images. Finally, the function calls <code>plt.show</code> to display all of the generated images.
+  </p>
