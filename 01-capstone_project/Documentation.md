@@ -44,9 +44,13 @@ The model is then compiled with an Adam optimizer and a binary cross-entropy los
 <p>Here is an example of how to use the <code>checkpoint_weights</code> function to set up the callbacks for model training:</p>
 <pre><code>callbacks = checkpoint_weights(model_name='my_model', checkpoint_dir='checkpoints', log_dir='logs')
 
-model.fit(X_train, y_train, validation_data=(X_val, y_val), epochs=100, callbacks=callbacks)
+model.fit(train_generator,
+                                epochs=100,
+                                validation_data=validation_generator,
+                                callbacks=callbacks,
+                                steps_per_epoch=len(train_generator))
 </code></pre>
-<p>This will train the model using the provided training and validation data, and save the best model weights to a file in the <code>checkpoints</code> directory with a name that includes the epoch number and the validation accuracy. If the validation accuracy does not improve after 3 epochs, the training will be stopped and the best model weights will be restored. In addition, the training progress will be logged to the <code>logs</code> directory and can be visualized in TensorBoard.</p>
+<p>This will train the model using the provided training and validation data, and save the best model weights to a file in the <code>checkpoints</code> directory with a name that includes the epoch number and the validation accuracy. If the validation accuracy does not improve after 3 epochs, the training will be stopped and the best model will be restored. In addition, the training progress will be logged to the <code>logs</code> directory and can be visualized in TensorBoard.</p>
 
 
 <h1>train function</h1>
