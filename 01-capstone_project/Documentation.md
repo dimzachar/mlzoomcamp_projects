@@ -40,11 +40,34 @@ The function also creates an EarlyStopping callback and specifies the number of 
 The function returns a list containing the ModelCheckpoint, EarlyStopping, and TensorBoard callbacks.
 
 
-* train function
+<h1>train function</h1>
 
 This function is used for training and assessing a model with multiple learning rates. The build_model function is used to construct the model using the supplied learning rate, dropout rate, and other parameters. The model is then trained using the supplied training data and epochs, as well as the specified callbacks. The training history is saved and returned as a dictionary, with the hyperparameters (learning rate and dropout rate) as keys and the training history objects as values. In addition, the function returns the trained model with the highest validation accuracy.
 
 It appears that the model is trained using a static graph defined by the train_step function. The train_step function performs a single training step, using a gradient tape to compute the gradients of the loss function with respect to the model's trainable variables and applying the gradients using the optimizer. The loss value resulting from the training step is returned by the function.
+
+
+<p>The <code>train</code> function allows you to train and evaluate a model for multiple learning rates.</p>
+<h2>Parameters:</h2>
+<ul>
+  <li><code>rates</code>: a list of float values representing the learning rates to use for training the model.</li>
+  <li><code>checkpoint_weights</code>: a function that creates a ModelCheckpoint callback for saving the model weights during training.</li>
+  <li><code>epochs</code>: an integer representing the number of epochs to train the model.</li>
+  <li><code>input_shape</code>: a tuple representing the shape of the input data.</li>
+  <li><code>include_dropout</code>: a boolean indicating whether or not to include dropout layers in the model.</li>
+</ul>
+<h2>Returns:</h2>
+<ul>
+  <li><code>scores</code>: a dictionary containing the training history for each learning rate. The keys of the dictionary are the learning rates and the values are the training history objects returned by the <code>fit</code> method.</li>
+  <li><code>model</code>: a trained <code>tf.keras.Model</code> with the best validation accuracy.</li>
+</ul>
+<h2>Example</h2>
+<pre><code>scores, model = train(rates=[0.001, 0.01, 0.1],
+                      callbacks=create_checkpoint_callback,
+                      epochs=10,
+                      input_shape=(128, 128, 3),
+                      include_dropout=True)
+</code></pre>
 
 * plot function 
 
@@ -59,7 +82,7 @@ The plot function first extracts the accuracy and loss data from the history obj
 
 After defining the plot function, the code iterates over the items in the scores dictionary and calls the plot function for each item, passing in the corresponding history, label, and figure number.
 
-* <h1>plot_image_extension_frequency</h1>
+<h1>plot_image_extension_frequency</h1>
 
 <p>This function plots the frequency of different image extensions in a given directory.</p>
 
