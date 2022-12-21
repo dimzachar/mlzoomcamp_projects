@@ -15,20 +15,28 @@ The model also includes an optional dropout layer with a specified dropout rate,
 The model is then compiled with an Adam optimizer and a binary cross-entropy loss function, and its performance is evaluated using accuracy metrics. The model's summary is also printed to provide a summary of the model's layers and their sizes.
 
 
-* checkpoint_weight function
+<h1>checkpoint_weight function</h1>
 
 
-We define a set of callbacks for use during the training of a model in TensorFlow. The main purpose of the callbacks is to save the best model weights to a file during training and to stop the training if the validation accuracy does not improve after a certain number of epochs.
+<p>The <code>checkpoint_weights</code> function is a utility function that sets up several callbacks for use during model training. The main purpose of the callbacks is to save the best model to a file during training and to stop the training if the validation accuracy does not improve after a certain number of epochs. These callbacks include:</p>
+<ul>
+  <li><code>ModelCheckpoint</code>: This callback saves the best model weights to a file, with a name that includes the epoch number and the validation accuracy.</li>
+  <li><code>EarlyStopping</code>: This callback stops the training if the validation accuracy does not improve after a specified number of epochs (in this case, 3 epochs).</li>
+  <li><code>TensorBoard</code>: This callback is used to visualize the training progress in TensorBoard, a tool for analyzing and debugging machine learning models.</li>
+</ul>
+<h3>Usage</h3>
+<p>To use the <code>checkpoint_weights</code> function, you need to provide the following arguments:</p>
+<ul>
+  <li><code>model_name</code>: The name of the model. This name will be used to name the checkpoint files that are saved.</li>
+  <li><code>checkpoint_dir</code>: The directory where the model checkpoint files will be saved.</li>
+  <li><code>log_dir</code>: The directory where the TensorBoard logs will be saved.</li>
+  <li><code>delete_files</code> (optional, default=True): A flag to indicate whether to delete existing checkpoints. If this flag is set to <code>True</code>, the function will delete all files in the <code>checkpoint_dir</code> directory that contain the <code>model_name</code> in their names. If this flag is not set or is set to <code>False</code>, the function will append an underscore and a number to the end of <code>model_name</code> if there are any files in the <code>checkpoint_dir</code> directory that contain <code>model_name</code> in their names.</li>
+  <li><code>restore_from_checkpoint</code> (optional, default=False): A flag to indicate whether to restore the model weights from a checkpoint file. If this flag is set to <code>True</code>, the function will find the latest checkpoint file in the <code>checkpoint_dir</code> directory and load the model weights from it.</li>
+  <li><code>callbacks</code> : a list of callbacks to use during training. If this parameter is not provided, the function will create the ModelCheckpoint, EarlyStopping, and TensorBoard callbacks.</li>
 
-The function takes several parameters:
 
-    model_name: the name of the model.
-    checkpoint_dir: the directory where the checkpoints will be saved.
-    log_dir: the directory where the TensorBoard logs will be saved.
-    delete_files: a flag to indicate whether to delete existing checkpoints with the same model name.
-    restore_from_checkpoint: a flag to indicate whether to restore the model weights from the latest checkpoint file.
-    callbacks: a list of callbacks to use during training. If this parameter is not provided, the function will create the ModelCheckpoint, EarlyStopping, and TensorBoard callbacks.
 
+</ul>
 The function first checks if the checkpoint_dir and log_dir directories exist, and creates them if they do not. It then checks the value of the restore_from_checkpoint flag and, if it is set to True, searches for the latest checkpoint file in the checkpoint_dir directory with the same model name and restores the model weights from it.
 
 The function then checks the value of the delete_files flag. If it is set to True, the function deletes all existing checkpoint files with the same model name in the checkpoint_dir directory. If delete_files is not set or is set to False, the function appends an underscore and a number to the end of model_name if there are any existing checkpoint files with the same model name in the checkpoint_dir directory. The number is equal to the number of such files in the directory.
@@ -37,17 +45,22 @@ The function then creates a ModelCheckpoint callback and specifies the checkpoin
 
 The function also creates an EarlyStopping callback and specifies the number of epochs to wait before stopping the training if the validation accuracy does not improve. Finally, the function creates a TensorBoard callback and specifies the log_dir directory as the location for the TensorBoard logs.
 
-The function returns a list containing the ModelCheckpoint, EarlyStopping, and TensorBoard callbacks.
+
+<p>The <code>checkpoint_weights</code> function returns a list containing the <code>ModelCheckpoint</code>, <code>EarlyStopping</code>, and <code>TensorBoard</code> callbacks, which you can pass to the <code>fit</code> function of your model to use during training.</p>
+<p>Here is an example of how to use the <code>checkpoint_weights</code> function to set up the callbacks for model training:</p>
+<pre><code>callbacks = checkpoint_weights(model_name='my_model', checkpoint_dir='checkpoints', log_dir='logs')
+
+model.fit(X_train, y_train, validation_data=(X_val, y_val), epochs=100, callbacks=callbacks)
+</code></pre>
+<p>This will train the model using the provided training and validation data, and save the best model weights to a file in the <code>checkpoints</code> directory with a name that includes the epoch number and the validation accuracy. If the validation accuracy does not improve after 3 epochs, the training will be stopped and the best model weights will be restored. In addition, the training progress will be logged to the <code>logs</code> directory and can be visualized in TensorBoard.</p>
 
 
 <h1>train function</h1>
 
-This function is used for training and assessing a model with multiple learning rates. The build_model function is used to construct the model using the supplied learning rate, dropout rate, and other parameters. The model is then trained using the supplied training data and epochs, as well as the specified callbacks. The training history is saved and returned as a dictionary, with the hyperparameters (learning rate and dropout rate) as keys and the training history objects as values. In addition, the function returns the trained model with the highest validation accuracy.
+<p>The <code>train</code> function allows you to train and evaluate a model for multiple learning rates.</p> The <code>build_model</code> function is used to construct the model using the supplied learning rate, dropout rate, and other parameters. The model is then trained using the supplied training data and epochs, as well as the specified callbacks. The training history is saved and returned as a dictionary, with the hyperparameters (learning rate and dropout rate) as keys and the training history objects as values. In addition, the function returns the trained model with the highest validation accuracy.
 
 It appears that the model is trained using a static graph defined by the train_step function. The train_step function performs a single training step, using a gradient tape to compute the gradients of the loss function with respect to the model's trainable variables and applying the gradients using the optimizer. The loss value resulting from the training step is returned by the function.
 
-
-<p>The <code>train</code> function allows you to train and evaluate a model for multiple learning rates.</p>
 <h2>Parameters:</h2>
 <ul>
   <li><code>rates</code>: a list of float values representing the learning rates to use for training the model.</li>
