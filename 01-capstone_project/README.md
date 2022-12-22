@@ -166,7 +166,7 @@ pipenv run python train.py
 
 Note: 
 * Ignore any warnings and wait till you see the message <code>Finished</code>. In the end you will have a <code>model.tflite</code> file in the directory. You can also find the best model in .h5 format inside the <code>checkpoints</code> folder.
-* If you don't want to run <code>train.py (even though you should) there are files in folder <code>Extra_models</code> in <code>.h5</code> and <code>.tflite</code> format. I have no responsibility if they work (I guess they do).
+* If you don't want to run <code>train.py</code> (even though you should) there are files in folder <code>Extra_models</code> in <code>.h5</code> and <code>.tflite</code> format. I have no responsibility if they work (I guess they do).
 
 
 
