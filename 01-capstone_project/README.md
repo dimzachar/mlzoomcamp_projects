@@ -84,6 +84,10 @@ Download repo
 git clone https://github.com/dimzachar/mlzoomcamp_projects.git
 ```
 
+Note: 
+* You can git clone the repo in Saturn Cloud instead of running it in your own pc. Just make sure you have set it up, see [here](https://github.com/dimzachar/mlzoomcamp/blob/master/Notes/saturn.md)
+
+
 For the virtual environment, I utilized pipenv. 
 
 Alternative (optional): You can install all dependencies with `pip` with the following command:
@@ -102,7 +106,7 @@ If you want to use the same venv as me, install pipenv and dependencies, navigat
 cd 01-capstone_project
 pip install pipenv
 pipenv shell
-pipenv install numpy pandas seaborn jupyter plotly scipy tensorflow==2.9.2 scikit-learn==1.1.3 pydantic==1.10.2
+pipenv install numpy pandas seaborn jupyter plotly scipy tensorflow==2.9.1 scikit-learn==1.1.3 tensorflow-gpu
 ```
 
 Before you begin you need to download the data. You can either download them manually from [Kaggle](https://www.kaggle.com/datasets/vencerlanz09/shells-or-pebbles-an-image-classification-dataset) or use the kaggle cli with your API keys (you need to download the kaggle.json from your profile amd paste it in PATH/.kaggle) and extract the files
