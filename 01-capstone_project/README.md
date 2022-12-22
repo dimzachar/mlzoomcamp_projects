@@ -84,21 +84,16 @@ Download repo
 git clone https://github.com/dimzachar/mlzoomcamp_projects.git
 ```
 
-Note: 
-* You can git clone the repo in Saturn Cloud instead of running it in your own pc. Just make sure you have set it up, see [here](https://github.com/dimzachar/mlzoomcamp/blob/master/Notes/saturn.md)
+Notes: 
+* You can git clone the repo in Saturn Cloud instead of running it in your own pc. 
+* Just make sure you have set it up, see [here](https://github.com/dimzachar/mlzoomcamp/blob/master/Notes/saturn.md). Create secrets for Kaggle in order to download the data.
+* You don't need pipenv if you use Saturn Cloud
+* See instructions below for more
+* You can access the environment here
+[![Run in Saturn Cloud](https://saturncloud.io/images/embed/run-in-saturn-cloud.svg)](https://app.community.saturnenterprise.io/dash/o/community/resources?templateId=de4b54089e2f44c7a365870693dfc8fb)
 
 
 For the virtual environment, I utilized pipenv. 
-
-Alternative (optional): You can install all dependencies with `pip` with the following command:
-
-`pip install -r pip-requirements.txt`
-
-> Note: `pip-requirements.txt` was created with the following command:
-
-> `pip list --format=freeze > pip-requirements.txt`
-
-
 
 If you want to use the same venv as me, install pipenv and dependencies, navigate to the folder with the given files:
 
@@ -117,6 +112,8 @@ kaggle config set -n api.key -v YOUR_API_KEY
 kaggle datasets download -d vencerlanz09/shells-or-pebbles-an-image-classification-dataset -p Images
 ```
 ![kaggle](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/Extra/kaggle.png)
+
+If you run it on Saturn Cloud make sure you are inside <code>/tensorflow/mlzoomcamp_projects/01-capstone_project</code>.
 
 
 This will download the zip file inside folder named Images. Then, unzip it inside this folder manually or using git bash and delete the zip file. Since you are inside 01-capstone_project folder do
@@ -169,7 +166,7 @@ pipenv run python train.py
 ```
 
 Note: 
-* Ignore any warnings and wait till you see the message <code>Finished</code>. In the end you will have a <code>model.tflite</code> file in the directory. You can also find the best model in .h5 format inside the <code>checkpoints</code> folder.
+* Ignore if you get any warnings (you shouldn't get but in any case) and wait till you see the message <code>Finished</code>. In the end you will have a <code>model.tflite</code> file in the directory. You can also find the best model in .h5 format inside the <code>checkpoints</code> folder.
 * If you don't want to run <code>train.py</code> (even though you should) there are files in folder <code>Extra_models</code> in <code>.h5</code> and <code>.tflite</code> format. I have no responsibility if they work (I guess they do).
 
 
@@ -264,9 +261,7 @@ Make sure you remove/delete everything after testing if necessary.
 
 Video of cloud deployment 
 
-
-https://user-images.githubusercontent.com/113017737/209052413-04d29ad2-3033-492d-bda8-60d1ab354dcc.mp4
-
+https://github.com/dimzachar/mlzoomcamp_projects/blob/master/Extra/shells.mp4
 
 That's a wrap!
 
