@@ -264,7 +264,9 @@ Make sure you remove/delete everything after testing if necessary.
 
 Video of cloud deployment 
 
-https://github.com/dimzachar/mlzoomcamp_projects/blob/master/Extra/shells.mp4
+
+https://user-images.githubusercontent.com/113017737/209052413-04d29ad2-3033-492d-bda8-60d1ab354dcc.mp4
+
 
 That's a wrap!
 
