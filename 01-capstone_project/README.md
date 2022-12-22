@@ -242,9 +242,12 @@ Hit Test, add a JSON document on request body
 ```bash
  {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Pebbleswithquarzite.jpg/1280px-Pebbleswithquarzite.jpg" }
 ```
+
 or other image
 ![posttest](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/Extra/post_test.png)
+
 ![testjson](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/Extra/test-json.png)
+
 
 Hit Deploy on Actions, select New Stage and give a name
 ![deployapi](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/Extra/deploy-api.png)
