@@ -1,7 +1,7 @@
 ## Capstone Project mlzoomcamp Image Classification 
 
 <p align="center">
-<img src="https://github.com/dimzachar/mlzoomcamp_projects/blob/master/01-capstone_project/Images/collage.jpg">
+<img src="https://github.com/dimzachar/mlzoomcamp_projects/blob/master/Extra/collage.jpg">
 </p>
 
 
@@ -252,6 +252,10 @@ Copy the invoke URL, put it in your /test.py file and run it
 
 Make sure you remove/delete everything after testing if necessary
 
+
+Video of cloud deployment 
+
+https://github.com/dimzachar/mlzoomcamp_projects/blob/master/Extra/shells.mp4
 
 ### What else can I do?
 * Send a pull request.
