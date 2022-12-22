@@ -256,12 +256,13 @@ Hit Deploy on Actions, select New Stage and give a name
 Copy the invoke URL, put it in your /test.py file and run it
 ![testinvoke](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/Extra/test_invoke_url.png)
 
-Make sure you remove/delete everything after testing if necessary
-
+Make sure you remove/delete everything after testing if necessary. 
 
 Video of cloud deployment 
 
 https://github.com/dimzachar/mlzoomcamp_projects/blob/master/Extra/shells.mp4
+
+That's a wrap!
 
 ### What else can I do?
 * Send a pull request.
