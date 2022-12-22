@@ -96,43 +96,161 @@ Alternative (optional): You can install all dependencies with `pip` with the fol
 
 
 
-
 If you want to use the same venv as me, install pipenv and dependencies, navigate to the folder with the given files:
-
-Before you begin you need to download the data. Folder structure should look like this
-```
-└───data
-    └───train
-        ├───Pebbles
-        └───Shells
-```
-
-Once you download the .zip file from Kaggle, create a data folder and inside a train folder and move the 2 folders from the .zip inside the train folder.
 
 ```bash
 cd 01-capstone_project
 pip install pipenv
+pipenv shell
 pipenv install numpy pandas seaborn jupyter plotly scipy tensorflow==2.9.2 scikit-learn==1.1.3 pydantic==1.10.2
 ```
 
+Before you begin you need to download the data. You can either download them manually from [Kaggle](https://www.kaggle.com/datasets/vencerlanz09/shells-or-pebbles-an-image-classification-dataset) or use the kaggle cli with your API keys (you need to download the kaggle.json from your profile amd paste it in PATH/.kaggle) and extract the files
+```bash
+kaggle config set -n api.username -v YOUR_USERNAME
+kaggle config set -n api.key -v YOUR_API_KEY
+
+kaggle datasets download -d vencerlanz09/shells-or-pebbles-an-image-classification-dataset -p Images
+```
+![kaggle](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/Extra/kaggle.png)
 
 
+This will download the zip file inside folder named Images. Then, unzip it inside this folder manually or using git bash and delete the zip file. Since you are inside 01-capstone_project folder do
+```bash
+unzip -q Images/shells-or-pebbles-an-image-classification-dataset.zip -d Images
+rm Images/shells-or-pebbles-an-image-classification-dataset.zip
+```
 
 
-3. Enter shell. To open the `notebook.ipynb` and see all the models
+Folder structure should now look like this
+```
+Images
+├───Pebbles
+└───Shells
+```
+Now run <code>create_directories</code> script, which will split the images into train, val and test folders (60%,20%,20%) with labels
 
 ```bash
-pipenv shell
+pipenv run python create_directories.py
+```
+
+The final structure before you train the model should look like this
+```
+Images
+├───test
+│   ├───Pebbles
+│   └───Shells
+├───train
+│   ├───Pebbles
+│   └───Shells
+└───val
+    ├───Pebbles
+    └───Shells
+```
+
+
+3. To open the `notebook.ipynb` and see what is inside (optional), run jupyter
+
+```bash
 pipenv run jupyter notebook
 ```
 
-For the following you need to run train.py
+
+4. For the evaluation you would need to run <code>train.py</code>. This, will run the train function and construct a ML model with best parameters which will be saved in <code>checkpoints</code> folder (it will be created automatically). The model with highest validation accuracy will be loaded, evaluated (it will return some metrics) and then converted to a Tensorflow Lite model in order to deploy it in the cloud later.
+Note: If you run it on a CPU it will take some time (minimum 20 minutes). It is a good idea to use a GPU to speed up the training process. 
+
+
 ```bash
 pipenv run python train.py
 ```
 
+Note: Ignore any warnings and wait till you see the message <code>Finished</code>. In the end you will have a <code>model.tflite</code> file in the directory. You can also find the best model in .h5 format inside the <code>checkpoints</code> folder.
 
 
+
+### Docker container
+
+To deploy the model locally, follow these steps:
+
+* Install Docker on your system. Instructions can be found [here](https://docs.docker.com/get-docker/).
+* Build the Docker image for the model and run the container using the following commands:
+
+
+```bash
+docker build -t model .
+docker run -it --rm -p 8080:8080 model:latest
+```
+then run
+
+```bash
+pipenv run python test.py
+```
+
+to test it locally using an url. 
+
+The function returns a dictionary with a single key-value pair, where the key is the class label and the value is the prediction value. The class label is "Shells" if the prediction value is greater than or equal to 0.5, or "Pebbles" if the prediction value is less than 0.5. The prediction value is always greater than or equal to 0.5.
+
+For example, if the value of pred is 0.7, the class label will be "Shells" and the prediction value will be 0.7. If the value of pred is 0.3, the class label will be "Pebbles" and the prediction value will be 0.7.
+
+![local](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/Extra/testing_local.png)
+
+
+### Cloud deployment 
+
+In order to deploy it to AWS we push the docker image. Make sure you have an account and install AWS CLI. Instructions can be found [here](https://mlbookcamp.com/article/aws)
+
+First, create a repository on Amazon Elastic Container Registry (ECR) with an appropriate name
+![registry2](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/Elastic-Container-Registry%20(2).png)
+
+![registry](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/Elastic-Container-Registry%20.png)
+
+You will find the push commands there to tag and push the latest docker image
+![ECR](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/Elastic-Container-push.png)
+
+which you find on your system with
+
+```bash
+pipenv run docker images
+```
+
+Next, we publish to AWS Lambda.
+
+Go to AWS Lambda, create function, select container image and add a name. Then, browse your image and finally hit create function 
+![function](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/Extra/Create-function-Lambda.png)
+
+Go to configuration, change timeout to 30 seconds and increase memory RAM (e.g. 1024)
+![settings](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/Extra/Edit-basic-settings-Lambda.png)
+
+Test the function by changing the event json
+![eventjson](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/Extra/event-json.png)
+
+Expose the lambda function using API Gateway. Go to API Gateway, select REST API and build a new API
+![apigate](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/Extra/API-Gateway.png)
+
+Create a new API, give a name
+![apigatecreate](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/Extra/API-Gateway-Create-API.png)
+
+Create new resource, name it predict
+![apiresource](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/Extra/api_resource.png)
+
+Create new method, select POST and hit click. Choose Lambda function as integration type and on Lambda function give the name of the function you created and hit save 
+![post](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/Extra/post.png)
+
+Hit Test, add a JSON document on request body
+```bash
+ {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Pebbleswithquarzite.jpg/1280px-Pebbleswithquarzite.jpg" }
+```
+or other image
+![posttest](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/Extra/post_test.png)
+![testjson](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/Extra/test-json.png)
+
+Hit Deploy on Actions, select New Stage and give a name
+![deployapi](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/Extra/deploy-api.png)
+
+Copy the invoke URL, put it in your /test.py file and run it
+![testinvoke](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/Extra/test_invoke_url.png)
+
+Make sure you remove/delete everything after testing if necessary
 
 
 ### What else can I do?

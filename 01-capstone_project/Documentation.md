@@ -1,6 +1,6 @@
 ## Documentation
 
-<h1>build_model  function</h1>
+<h1>build_model</h1>
 
 <p>This is a function that creates a model for image classification using a pre-trained model (specified by base_model - <code>Xception</code> from Keras Applications in particular) as a base model, with some additional inner layers and a final output layer. The model takes a tuple of input data input_shape (e.g. (150, 150, 3) for images with given resolution and 3 color channels) as input and returns a compiled model.</p>
 
@@ -13,7 +13,7 @@
 <p>Finally, the model is compiled with an Adam optimizer (using the specified learning_rate) and a binary cross-entropy loss function. The model's summary is then printed and the compiled model is returned.</p>
 
 
-<h1>checkpoint_weight function</h1>
+<h1>checkpoint_weight</h1>
 
 
 <p>The <code>checkpoint_weights</code> function is a utility function that sets up several callbacks for use during model training. The main purpose of the callbacks is to save the best model to a file during training and to stop the training if the validation accuracy does not improve after a certain number of epochs. These callbacks include:</p>
@@ -51,7 +51,7 @@ model.fit(train_generator,
 <p>This will train the model using the provided training and validation data, and save the best model weights to a file in the <code>checkpoints</code> directory with a name that includes the epoch number and the validation accuracy. If the validation accuracy does not improve after 3 epochs, the training will be stopped and the best model will be restored. In addition, the training progress will be logged to the <code>logs</code> directory and can be visualized in TensorBoard.</p>
 
 
-<h1>train function</h1>
+<h1>train</h1>
 
 <p>The <code>train</code> function allows you to train and evaluate a model for multiple learning rates.</p> The <code>build_model</code> function is used to construct the model using the supplied learning rate, dropout rate, and other parameters. The model is then trained using the supplied training data and epochs, as well as the specified callbacks. The training history is saved and returned as a dictionary, with the hyperparameters (learning rate and dropout rate) as keys and the training history objects as values. In addition, the function returns the trained model with the highest validation accuracy.
 
@@ -78,7 +78,7 @@ It appears that the model is trained using a static graph defined by the train_s
                       include_dropout=True)
 </code></pre>
 
-* <h1>plot_metrics</h1>
+<h1>plot_metrics</h1>
 
 <p>We define a function <code>plot_metrics</code> that takes in a history object, label, maximum number of epochs, and figure number, and plots the accuracy and loss for training and validation data on separate subplots of a single figure.</p>
 <p>The <code>history</code> object is expected to have the keys <code>'accuracy'</code>, <code>'val_accuracy'</code>, <code>'loss'</code>, and <code>'val_loss'</code>, which represent the accuracy and loss for training and validation data, respectively. These are plotted using the <code>plot</code> function of the <code>matplotlib</code> library, with the <code>x</code>-axis representing the epoch number and the <code>y</code>-axis representing either the accuracy or loss.</p>
