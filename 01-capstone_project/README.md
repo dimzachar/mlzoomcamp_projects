@@ -244,12 +244,13 @@ Hit Test, add a JSON document on request body
 ```
 
 or other image
-![posttest](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/Extra/post_test.png)
 
+![posttest](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/Extra/post_test.png)
 ![testjson](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/Extra/test-json.png)
 
 
 Hit Deploy on Actions, select New Stage and give a name
+
 ![deployapi](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/Extra/deploy-api.png)
 
 Copy the invoke URL, put it in your /test.py file and run it
