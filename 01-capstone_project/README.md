@@ -58,10 +58,10 @@ Potential objectives for this project include:
 * Tune the model's hyperparameters to get the best possible accuracy.
 	* Used learning rate, droprate as main hyperparameters. Also added data augmentation but due to lack of time and computer resources didn't spend much time on tuning it further. Size of inner layers, img size and other parameters could also be changed by the user.
 * Use the callbacks to save the best model weights and and end training if the validation accuracy does not increase after a certain number of epochs.
-* Utilize TensorBoard to visualize the training process and find trends or patterns in the data. (I didn't make use of this in the end)
+* Utilize TensorBoard to visualize the training process and find trends or patterns in the data (I didn't make use of this in the end).
 * Use the trained model to accurately categorize new photos as Shells or Pebbles.
 * Deploy the trained model in a production environment.
-* Create comprehensive documentation for the project, including a detailed description of the model architecture, training procedure and deployment.
+* Create comprehensive [Documentation](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/01-capstone_project/Documentation.md) for the project, including a detailed description of the model architecture, training procedure and deployment.
 * Display the project's outcomes in a more professional way.
 
 
@@ -79,12 +79,12 @@ conda activate project
 
 or do it on your own environment.
 
-1. Download repo
+Download repo
 ```bash
 git clone https://github.com/dimzachar/mlzoomcamp_projects.git
 ```
 
-2. For the virtual environment, I utilized pipenv. 
+For the virtual environment, I utilized pipenv. 
 
 Alternative (optional): You can install all dependencies with `pip` with the following command:
 
@@ -149,14 +149,14 @@ Images
 ```
 
 
-3. To open the `notebook.ipynb` and see what is inside (optional), run jupyter
+To open the `notebook.ipynb` and see what is inside (optional), run jupyter
 
 ```bash
 pipenv run jupyter notebook
 ```
 
 
-4. For the evaluation you would need to run <code>train.py</code>. This, will run the train function and construct a ML model with best parameters which will be saved in <code>checkpoints</code> folder (it will be created automatically). The model with highest validation accuracy will be loaded, evaluated (it will return some metrics) and then converted to a Tensorflow Lite model in order to deploy it in the cloud later.
+For the evaluation you would need to run <code>train.py</code>. This, will run the train function and construct a ML model with best parameters which will be saved in <code>checkpoints</code> folder (it will be created automatically). The model with highest validation accuracy will be loaded, evaluated (it will return some metrics) and then converted to a Tensorflow Lite model in order to deploy it in the cloud later.
 Note: If you run it on a CPU it will take some time (minimum 20 minutes). It is a good idea to use a GPU to speed up the training process. 
 
 
@@ -164,7 +164,9 @@ Note: If you run it on a CPU it will take some time (minimum 20 minutes). It is 
 pipenv run python train.py
 ```
 
-Note: Ignore any warnings and wait till you see the message <code>Finished</code>. In the end you will have a <code>model.tflite</code> file in the directory. You can also find the best model in .h5 format inside the <code>checkpoints</code> folder.
+Note: 
+* Ignore any warnings and wait till you see the message <code>Finished</code>. In the end you will have a <code>model.tflite</code> file in the directory. You can also find the best model in .h5 format inside the <code>checkpoints</code> folder.
+* If you don't want to run <code>train.py (even though you should) there are files in folder <code>Extra_models</code> in <code>.h5</code> and <code>.tflite</code> format. I have no responsibility if they work (I guess they do).
 
 
 
@@ -202,10 +204,10 @@ In order to deploy it to AWS we push the docker image. Make sure you have an acc
 First, create a repository on Amazon Elastic Container Registry (ECR) with an appropriate name
 ![registry2](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/Elastic-Container-Registry%20(2).png)
 
-![registry](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/Elastic-Container-Registry%20.png)
+![registry](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/Extra/Elastic-Container-Registry.png)
 
 You will find the push commands there to tag and push the latest docker image
-![ECR](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/00-midterm_project/Images/Elastic-Container-push.png)
+![ECR](https://github.com/dimzachar/mlzoomcamp_projects/blob/master/Extra/Elastic-Container-push.png)
 
 which you find on your system with
 
